@@ -5,9 +5,78 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float moveSpeed = 10;
+    [SerializeField] private GameInput gameInput;
+    [SerializeField] private LayerMask layerMask;
+
     private bool isWalking;
-    [SerializeField]private GameInput gameInput;
+    private Vector3 lastInteractDir;
+
+    private void Start()
+    {
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float interctDistance = 2f;
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interctDistance, layerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                clearCounter.Interact();
+            }
+        }
+    }
+
     private void Update()
+    {
+        HandleMovement();
+        HandleInteractions();
+    }
+
+    public bool IsWalking()
+    {
+        return isWalking;
+    }
+
+
+    private void HandleInteractions()
+    {
+
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+
+        if(moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float interctDistance = 2f;
+        if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interctDistance, layerMask))
+        {
+            if(raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                //clearCounter.Interact();
+            }
+        }
+        else
+        {
+            Debug.Log("-");
+        }
+    }
+
+
+    private void HandleMovement()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
 
@@ -16,11 +85,11 @@ public class Player : MonoBehaviour
         float moveDistance = moveSpeed * Time.deltaTime;
         float playerHeight = 2f;
         float playerRadius = 0.8f;
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position+Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
+        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
-        
 
-        if(!canMove)
+
+        if (!canMove)
         {
             Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
             canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
@@ -29,7 +98,7 @@ public class Player : MonoBehaviour
             {
                 moveDir = moveDirX;
             }
-            
+
             else
             {
                 Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
@@ -47,14 +116,9 @@ public class Player : MonoBehaviour
         isWalking = moveDir != Vector3.zero;
 
         float rotateSpeed = 5;
-        transform.forward = Vector3.Slerp(transform.forward,moveDir,Time.deltaTime* rotateSpeed);
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
 
-    }
-
-    public bool IsWalking()
-    {
-        return isWalking;
     }
 
 }
