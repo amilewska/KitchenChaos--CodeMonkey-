@@ -193,7 +193,7 @@ Transform:
   m_Children:
   - {fileID: 668177756}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 46, y: 0, z: 0}
 --- !u!1001 &25567513
 PrefabInstance:
@@ -263,11 +263,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+        type: 3}
+      propertyPath: testing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+        type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 2033613415}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6d4dbfc242e3b6428d014a713923ed7, type: 3}
+--- !u!1 &72773347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72773348}
+  m_Layer: 0
+  m_Name: KitchenObjectHoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &72773348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72773347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1794169361}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92771949
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +339,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &92771951
 MonoBehaviour:
@@ -310,6 +351,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9730dac05c9517e42a7a5fe1171df349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &295913854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+    type: 3}
+  m_PrefabInstance: {fileID: 25567513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1542958868e15e741a9273ac6fcf4a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &330585543
@@ -1018,8 +1071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3ba896780face4ea1df7d71b01840d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kitchenObjectHoldPoint: {fileID: 72773348}
   gameInput: {fileID: 92771951}
-  layerMask:
+  countersLayerMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!4 &1794169361
@@ -1035,9 +1089,22 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1157167227}
+  - {fileID: 72773348}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2033613415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2730074034563116757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1542958868e15e741a9273ac6fcf4a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2730074034563116757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1111,6 +1178,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+        type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+        type: 3}
+      propertyPath: tomatoPrefab
+      value: 
+      objectReference: {fileID: 3354538787088710462, guid: 12199addf6fe88b4a87ac7cb38354ba9,
+        type: 3}
+    - target: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+        type: 3}
+      propertyPath: kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 2733a4ce96eb8ac47bceca80d740e2e7,
+        type: 2}
+    - target: {fileID: 8389806803814008176, guid: f6d4dbfc242e3b6428d014a713923ed7,
+        type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 295913854}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
