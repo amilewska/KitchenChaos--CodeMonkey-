@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d6f851a22403b64981d2b1cf8f3e021, type: 3}
-  m_Name: SeitanPattyUncooked
+  m_Name: SeitanPattyCooked
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3354538787088710462, guid: cf440bbfe2281c84880ecef07af411ca, type: 3}
-  sprite: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
-  objectName: Seitan Patty Uncooked
+  prefab: {fileID: 3354538787088710462, guid: e7262cb2f841b0d4faecaaa1c50fa829, type: 3}
+  sprite: {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
+  objectName: Seitan Patty Cooked
