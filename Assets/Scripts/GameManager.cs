@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    public event EventHandler OnStateChanged;
+
     private enum State
     {
         WaitingToStart,
@@ -16,7 +20,7 @@ public class GameManager : MonoBehaviour
     private State state;
     private float waitingToStartTimer = 1f;
     private float countdownToStartTimer = 3f;
-    private float gamePlayingTimer = 10f;
+    private float gamePlayingTimer = 20f;
 
     private void Awake()
     {
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
                 if (waitingToStartTimer < 0)
                 {
                     state = State.CountdownToStart;
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
 
@@ -41,6 +46,7 @@ public class GameManager : MonoBehaviour
                 if (countdownToStartTimer < 0)
                 {
                     state = State.GamePlaying;
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
 
@@ -49,7 +55,8 @@ public class GameManager : MonoBehaviour
                 if (gamePlayingTimer < 0)
                 {
                     state = State.GameOver;
-;                       
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
+                    ;                       
                 }
                 break;
 
@@ -66,6 +73,20 @@ public class GameManager : MonoBehaviour
         return state == State.GamePlaying;
     }
 
+    public bool IsCountDownStartActive()
+    {
+        return state == State.CountdownToStart;
+    }
+
+    public float GetCountdownToStartTimer()
+    {
+        return countdownToStartTimer;
+    }
+
+    public bool IsGameOver()
+    {
+        return state == State.GameOver;
+    }
 
 
 }
