@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 1173152621133577672}
   - component: {fileID: 1659031019732260725}
   - component: {fileID: 6798701396069744740}
+  - component: {fileID: 6284477733212693077}
+  - component: {fileID: 4897035021611768900}
   m_Layer: 5
   m_Name: ProgressBarUI
   m_TagString: Untagged
@@ -285,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4441a190981c2d42878be6de54cdde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuttingCounter: {fileID: 0}
+  hasProgressGameObject: {fileID: 0}
   barImage: {fileID: 4152192350210707350}
 --- !u!114 &6798701396069744740
 MonoBehaviour:
@@ -300,3 +302,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 2
+--- !u!95 &6284477733212693077
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718510486240012849}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30ac2802eca7664458768d1253d5fb41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4897035021611768900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718510486240012849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f2deb2e3fb2d24d85ad80d8bb15ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoveCounter: {fileID: 0}
